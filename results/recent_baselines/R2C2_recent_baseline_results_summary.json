@@ -1,0 +1,436 @@
+{
+  "comment": "Reviewer 2 Comment 2",
+  "same_condition_protocol": {
+    "datasets": [
+      "chest",
+      "retinal-11",
+      "fundus-4"
+    ],
+    "test_counts": {
+      "chest": 77,
+      "retinal-11": 816,
+      "fundus-4": 632
+    },
+    "tile_size_native_pixels": 64,
+    "budgets": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "attacker": "independent MobileNetV3-Small per dataset",
+    "common_security_layer": "same AES-256-GCM tile-encryption implementation; residual-leakage endpoint uses neutral masking at selected tile locations",
+    "statistics": {
+      "bootstrap_resamples": 2000,
+      "paired_sign_flip_permutations": 10000,
+      "multiple_testing": "Holm"
+    }
+  },
+  "new_representative_baselines": {
+    "log_roi_inspired": {
+      "basis": "Protocol-normalized reproduction of the Laplacian-of-Gaussian ROI-selection principle used by Zhang et al. (Complex & Intelligent Systems, 2024, DOI 10.1007/s40747-023-01258-2).",
+      "implementation": "tiles ranked by mean absolute LoG response (sigma=1.0); original chaotic cipher not reproduced because cipher is held constant across same-condition selectors."
+    },
+    "cam_priority": {
+      "basis": "Alternative annotation-free model-derived Class Activation Mapping priority map (Zhou et al., CVPR 2016, DOI 10.1109/CVPR.2016.319).",
+      "implementation": "CAM from exact study ResNet-18 final layer4 features and target-class FC weights; argmax class on unmasked image."
+    }
+  },
+  "closest_recent_annotation_dependent_methods_not_directly_retrained": [
+    {
+      "paper": "Priyanka et al., YOLO-based ROI selection for joint encryption and compression of medical images with reconstruction through super-resolution network, FGCS 150 (2024) 1-9, DOI 10.1016/j.future.2023.08.018",
+      "reason": "YOLOv7 ROI detector requires task-specific ROI detection targets not consistently available across the three study datasets."
+    },
+    {
+      "paper": "Singh et al., DeepENC: Deep Learning-Based ROI Selection for Encryption of Medical Images Through Key Generation With Multimodal Information Fusion, IEEE TCE 70(3) (2024) 6149-6156, DOI 10.1109/TCE.2024.3406963",
+      "reason": "UNet3+ ROI segmentation requires ROI masks not consistently available across the three study datasets."
+    }
+  ],
+  "cross_dataset_macro": {
+    "25pct": {
+      "sracr_saliency": {
+        "attacker_accuracy": 0.52495087025988,
+        "attacker_macro_f1": 0.4589963857559897,
+        "protected_pixel_fraction_mean": 0.2501046874764324,
+        "max_abs_budget_match_error": 0.0007738424810197
+      },
+      "cam_priority": {
+        "attacker_accuracy": 0.5247740542323566,
+        "attacker_macro_f1": 0.4568554801848026,
+        "protected_pixel_fraction_mean": 0.2500838535094424,
+        "max_abs_budget_match_error": 0.0007061615065952
+      },
+      "log_roi_inspired": {
+        "attacker_accuracy": 0.4974665547078056,
+        "attacker_macro_f1": 0.4492713316783916,
+        "protected_pixel_fraction_mean": 0.250092187663171,
+        "max_abs_budget_match_error": 0.0008474788368903
+      },
+      "content_variance": {
+        "attacker_accuracy": 0.450993285691722,
+        "attacker_macro_f1": 0.393854859956497,
+        "protected_pixel_fraction_mean": 0.2501087262071627,
+        "max_abs_budget_match_error": 0.000830129751519
+      },
+      "center_roi": {
+        "attacker_accuracy": 0.6591383196930479,
+        "attacker_macro_f1": 0.6373454650070045,
+        "protected_pixel_fraction_mean": 0.250117764791931,
+        "max_abs_budget_match_error": 0.0007568748908053
+      },
+      "random": {
+        "attacker_accuracy": 0.5296694339415858,
+        "attacker_macro_f1": 0.4782477347252695,
+        "protected_pixel_fraction_mean": 0.250091330696419,
+        "max_abs_budget_match_error": 0.0008670153127649
+      }
+    },
+    "50pct": {
+      "sracr_saliency": {
+        "attacker_accuracy": 0.4091809623734419,
+        "attacker_macro_f1": 0.3469852888791795,
+        "protected_pixel_fraction_mean": 0.4999727715656745,
+        "max_abs_budget_match_error": 0.000827051649668
+      },
+      "cam_priority": {
+        "attacker_accuracy": 0.40567512966061,
+        "attacker_macro_f1": 0.3411526159280835,
+        "protected_pixel_fraction_mean": 0.4999718115605309,
+        "max_abs_budget_match_error": 0.0008603104382094
+      },
+      "log_roi_inspired": {
+        "attacker_accuracy": 0.391844127370933,
+        "attacker_macro_f1": 0.3020660260396655,
+        "protected_pixel_fraction_mean": 0.49998328510394,
+        "max_abs_budget_match_error": 0.0008655996261073
+      },
+      "content_variance": {
+        "attacker_accuracy": 0.3805428097591165,
+        "attacker_macro_f1": 0.2783547436057986,
+        "protected_pixel_fraction_mean": 0.4999717717525982,
+        "max_abs_budget_match_error": 0.0008655996261073
+      },
+      "center_roi": {
+        "attacker_accuracy": 0.501692142142626,
+        "attacker_macro_f1": 0.4398874469241239,
+        "protected_pixel_fraction_mean": 0.4999608990034197,
+        "max_abs_budget_match_error": 0.0008837204153243
+      },
+      "random": {
+        "attacker_accuracy": 0.4544926716371243,
+        "attacker_macro_f1": 0.388421638313476,
+        "protected_pixel_fraction_mean": 0.4999873904285998,
+        "max_abs_budget_match_error": 0.0009004255178837
+      }
+    },
+    "75pct": {
+      "sracr_saliency": {
+        "attacker_accuracy": 0.3094728397688188,
+        "attacker_macro_f1": 0.2356665917602947,
+        "protected_pixel_fraction_mean": 0.7499733054669763,
+        "max_abs_budget_match_error": 0.000820445765683
+      },
+      "cam_priority": {
+        "attacker_accuracy": 0.3100643306804885,
+        "attacker_macro_f1": 0.2479972019255696,
+        "protected_pixel_fraction_mean": 0.749970975443666,
+        "max_abs_budget_match_error": 0.0008655996261073
+      },
+      "log_roi_inspired": {
+        "attacker_accuracy": 0.3320497550765607,
+        "attacker_macro_f1": 0.2026530754419161,
+        "protected_pixel_fraction_mean": 0.7500047122970447,
+        "max_abs_budget_match_error": 0.0008844921191699
+      },
+      "content_variance": {
+        "attacker_accuracy": 0.3338026714329767,
+        "attacker_macro_f1": 0.2043323906799654,
+        "protected_pixel_fraction_mean": 0.7500099176378398,
+        "max_abs_budget_match_error": 0.000866371329953
+      },
+      "center_roi": {
+        "attacker_accuracy": 0.4076262841154873,
+        "attacker_macro_f1": 0.3343555030952658,
+        "protected_pixel_fraction_mean": 0.7500196630000753,
+        "max_abs_budget_match_error": 0.0008837204153243
+      },
+      "random": {
+        "attacker_accuracy": 0.4573892176740277,
+        "attacker_macro_f1": 0.3950704935594399,
+        "protected_pixel_fraction_mean": 0.7500005385476275,
+        "max_abs_budget_match_error": 0.00088449211917
+      }
+    }
+  },
+  "paired_correctness_tests_new_baselines": [
+    {
+      "dataset": "chest",
+      "nominal_budget": 0.25,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 77,
+      "mean_difference_positive_favors_sracr_privacy": 0.1168831168831168,
+      "difference_ci95_low": 0.0129870129870129,
+      "difference_ci95_high": 0.2207792207792207,
+      "paired_effect_dz": 0.2551553974162827,
+      "permutation_p": 0.0522947705229477,
+      "holm_p": 0.5229477052294771,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "chest",
+      "nominal_budget": 0.25,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 77,
+      "mean_difference_positive_favors_sracr_privacy": -0.0129870129870129,
+      "difference_ci95_low": -0.0779220779220779,
+      "difference_ci95_high": 0.0519480519480519,
+      "paired_effect_dz": -0.0428321915168447,
+      "permutation_p": 1.0,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "chest",
+      "nominal_budget": 0.5,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 77,
+      "mean_difference_positive_favors_sracr_privacy": 0.0129870129870129,
+      "difference_ci95_low": -0.1172077922077921,
+      "difference_ci95_high": 0.1428571428571428,
+      "paired_effect_dz": 0.02102879263366,
+      "permutation_p": 1.0,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "chest",
+      "nominal_budget": 0.5,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 77,
+      "mean_difference_positive_favors_sracr_privacy": 0.0,
+      "difference_ci95_low": -0.0519480519480519,
+      "difference_ci95_high": 0.0519480519480519,
+      "paired_effect_dz": 0.0,
+      "permutation_p": 1.0,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "chest",
+      "nominal_budget": 0.75,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 77,
+      "mean_difference_positive_favors_sracr_privacy": 0.0129870129870129,
+      "difference_ci95_low": -0.1038961038961039,
+      "difference_ci95_high": 0.1298701298701298,
+      "paired_effect_dz": 0.0259829075013753,
+      "permutation_p": 1.0,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "chest",
+      "nominal_budget": 0.75,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 77,
+      "mean_difference_positive_favors_sracr_privacy": 0.0259740259740259,
+      "difference_ci95_low": -0.0389610389610389,
+      "difference_ci95_high": 0.1038961038961039,
+      "paired_effect_dz": 0.0803185238571693,
+      "permutation_p": 0.7352264773522648,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "retinal",
+      "nominal_budget": 0.25,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 816,
+      "mean_difference_positive_favors_sracr_privacy": -0.1740196078431372,
+      "difference_ci95_low": -0.2058823529411764,
+      "difference_ci95_high": -0.1397058823529411,
+      "paired_effect_dz": -0.3649655888614423,
+      "permutation_p": 9.999000099990002e-05,
+      "holm_p": 0.0014998500149985,
+      "significant_holm_0_05": 1
+    },
+    {
+      "dataset": "retinal",
+      "nominal_budget": 0.25,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 816,
+      "mean_difference_positive_favors_sracr_privacy": 0.0061274509803921,
+      "difference_ci95_low": -0.0073529411764705,
+      "difference_ci95_high": 0.0208333333333333,
+      "paired_effect_dz": 0.0280218625170945,
+      "permutation_p": 0.5242475752424758,
+      "holm_p": 0.6571342865713429,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "retinal",
+      "nominal_budget": 0.5,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 816,
+      "mean_difference_positive_favors_sracr_privacy": -0.0539215686274509,
+      "difference_ci95_low": -0.0833333333333333,
+      "difference_ci95_high": -0.025735294117647,
+      "paired_effect_dz": -0.1284465948896293,
+      "permutation_p": 0.0002999700029997,
+      "holm_p": 0.002999700029997,
+      "significant_holm_0_05": 1
+    },
+    {
+      "dataset": "retinal",
+      "nominal_budget": 0.5,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 816,
+      "mean_difference_positive_favors_sracr_privacy": -0.0073529411764705,
+      "difference_ci95_low": -0.0196078431372549,
+      "difference_ci95_high": 0.0049019607843137,
+      "paired_effect_dz": -0.041202350997389,
+      "permutation_p": 0.3285671432856714,
+      "holm_p": 0.6571342865713429,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "retinal",
+      "nominal_budget": 0.75,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 816,
+      "mean_difference_positive_favors_sracr_privacy": -0.0575980392156862,
+      "difference_ci95_low": -0.0821078431372549,
+      "difference_ci95_high": -0.0330882352941176,
+      "paired_effect_dz": -0.1610123349327006,
+      "permutation_p": 9.999000099990002e-05,
+      "holm_p": 0.0014998500149985,
+      "significant_holm_0_05": 1
+    },
+    {
+      "dataset": "retinal",
+      "nominal_budget": 0.75,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 816,
+      "mean_difference_positive_favors_sracr_privacy": -0.0147058823529411,
+      "difference_ci95_low": -0.0281862745098039,
+      "difference_ci95_high": -0.0012254901960784,
+      "paired_effect_dz": -0.0768759282352742,
+      "permutation_p": 0.0405959404059594,
+      "holm_p": 0.202979702029797,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "split",
+      "nominal_budget": 0.25,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 632,
+      "mean_difference_positive_favors_sracr_privacy": -0.0253164556962025,
+      "difference_ci95_low": -0.0537974683544303,
+      "difference_ci95_high": 0.0015822784810126,
+      "paired_effect_dz": -0.0687374705192713,
+      "permutation_p": 0.1043895610438956,
+      "holm_p": 0.8351164883511649,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "split",
+      "nominal_budget": 0.25,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 632,
+      "mean_difference_positive_favors_sracr_privacy": 0.0063291139240506,
+      "difference_ci95_low": -0.0063291139240506,
+      "difference_ci95_high": 0.0189873417721519,
+      "paired_effect_dz": 0.0397778642087865,
+      "permutation_p": 0.4582541745825417,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "split",
+      "nominal_budget": 0.5,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 632,
+      "mean_difference_positive_favors_sracr_privacy": -0.0110759493670886,
+      "difference_ci95_low": -0.0348101265822784,
+      "difference_ci95_high": 0.0110759493670886,
+      "paired_effect_dz": -0.0375422776879139,
+      "permutation_p": 0.4190580941905809,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "split",
+      "nominal_budget": 0.5,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 632,
+      "mean_difference_positive_favors_sracr_privacy": -0.0031645569620253,
+      "difference_ci95_low": -0.0142405063291139,
+      "difference_ci95_high": 0.0079113924050632,
+      "paired_effect_dz": -0.0229536382744959,
+      "permutation_p": 0.7795220477952205,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    },
+    {
+      "dataset": "split",
+      "nominal_budget": 0.75,
+      "comparison": "sracr_saliency_vs_log_roi_inspired",
+      "alternative": "log_roi_inspired",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 632,
+      "mean_difference_positive_favors_sracr_privacy": 0.1123417721518987,
+      "difference_ci95_low": 0.0854430379746835,
+      "difference_ci95_high": 0.139280063291139,
+      "paired_effect_dz": 0.3215464100278334,
+      "permutation_p": 9.999000099990002e-05,
+      "holm_p": 0.0014998500149985,
+      "significant_holm_0_05": 1
+    },
+    {
+      "dataset": "split",
+      "nominal_budget": 0.75,
+      "comparison": "sracr_saliency_vs_cam_priority",
+      "alternative": "cam_priority",
+      "metric": "correctness_alt_minus_sracr",
+      "n_pairs": 632,
+      "mean_difference_positive_favors_sracr_privacy": -0.0094936708860759,
+      "difference_ci95_low": -0.0221518987341772,
+      "difference_ci95_high": 0.0031645569620253,
+      "paired_effect_dz": -0.0597259837062795,
+      "permutation_p": 0.208979102089791,
+      "holm_p": 1.0,
+      "significant_holm_0_05": 0
+    }
+  ]
+}

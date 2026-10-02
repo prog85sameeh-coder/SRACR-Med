@@ -1,0 +1,18 @@
+﻿dataset,predicted_class,clinical_criticality_C
+chest,Chest_Radiograh Screeing (X-Ray),0.75
+chest,NORMAL_Images,0.35
+retinal,AdvancedEnd-stage Glaucoma,1.0
+retinal,Dry Age-Related Macular Degeneration,0.8
+retinal,Mild Diabetic Retinopathy,0.65
+retinal,Mild Glaucoma,0.65
+retinal,Moderate Diabetic Retinopathy,0.8
+retinal,Moderate Glaucoma,0.8
+retinal,No Age-Related Macular Degeneration (Healthy regarding AMD),0.35
+retinal,Proliferative Diabetic Retinopathy (PDR),1.0
+retinal,Severe Diabetic Retinopathy,0.95
+retinal,Severe Glaucoma,0.95
+retinal,Wet Age-Related Macular Degeneration,0.95
+split,cataract,0.65
+split,diabetic_retinopathy,0.85
+split,glaucoma,0.85
+split,normal,0.35

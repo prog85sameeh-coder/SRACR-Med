@@ -1,0 +1,81 @@
+{
+  "comment": "Reviewer 2 Comment 4",
+  "scope": "controlled distribution-shift stress test on internal held-out images; not an external-site or multicenter validation and not patient-level validation",
+  "n_unique_test_images": 1525,
+  "image_shift_records": 6100,
+  "controller_sequence_records": 122000,
+  "controlled_shifts": {
+    "gaussian_blur_r1p5": "PIL GaussianBlur radius=1.5",
+    "jpeg_q40": "JPEG encode/decode quality=40, subsampling=2",
+    "downsample50_bilinear": "resize to 50% native width/height then restore with bilinear interpolation"
+  },
+  "cross_dataset_macro": {
+    "clean": {
+      "accuracy": 0.9038782947010796,
+      "macro_f1": 0.902261780793323,
+      "prediction_agreement_with_clean": 1.0,
+      "uncertainty_mean": 0.1230763283925065,
+      "saliency_reliability_mean": 0.9698261913422832,
+      "tile_spearman_vs_clean": 1.0,
+      "top50_jaccard_vs_clean": 1.0,
+      "saliency_burden_mean": 0.5507402006181145
+    },
+    "downsample50_bilinear": {
+      "accuracy": 0.9028141079983968,
+      "macro_f1": 0.9009352568165662,
+      "prediction_agreement_with_clean": 0.9749307375424278,
+      "uncertainty_mean": 0.1241042822914889,
+      "saliency_reliability_mean": 0.9697789357818988,
+      "tile_spearman_vs_clean": 0.9533119879205756,
+      "top50_jaccard_vs_clean": 0.9278755759469276,
+      "saliency_burden_mean": 0.5522449259785701
+    },
+    "gaussian_blur_r1p5": {
+      "accuracy": 0.8987136281440078,
+      "macro_f1": 0.8967888852894811,
+      "prediction_agreement_with_clean": 0.9674278418693906,
+      "uncertainty_mean": 0.1259155939386564,
+      "saliency_reliability_mean": 0.9696052439813744,
+      "tile_spearman_vs_clean": 0.9420216739641076,
+      "top50_jaccard_vs_clean": 0.9165904885428656,
+      "saliency_burden_mean": 0.5527914723067433
+    },
+    "jpeg_q40": {
+      "accuracy": 0.8952171298131835,
+      "macro_f1": 0.8935658760986213,
+      "prediction_agreement_with_clean": 0.9640502729668776,
+      "uncertainty_mean": 0.1254608965844346,
+      "saliency_reliability_mean": 0.9713974039402276,
+      "tile_spearman_vs_clean": 0.9426917738207524,
+      "top50_jaccard_vs_clean": 0.9133859920408106,
+      "saliency_burden_mean": 0.5540464895366878
+    }
+  },
+  "controller_findings": {
+    "all_12_dataset_shift_conditions_monotonic_non_decreasing_with_T": true,
+    "all_conditions_protected_fraction_at_T0p95": [
+      1.0
+    ],
+    "cross_dataset_macro_level_agreement_clean_min": 0.9213110790921664,
+    "cross_dataset_macro_mean_abs_level_delta_max": 0.0786889209078337,
+    "cross_dataset_macro_abs_mean_risk_delta_max": 0.0028854420541088,
+    "cross_dataset_macro_abs_protected_fraction_delta_max": 0.0027321896224276054,
+    "worst_dataset_shift_threat_level_agreement": {
+      "value": 0.8547468354430381,
+      "row": {
+        "dataset": "split",
+        "shift": "jpeg_q40",
+        "threat": 0.4
+      }
+    }
+  },
+  "claim_boundary": {
+    "supports": "Controlled internal distribution-shift stress testing of classifier/saliency/controller behavior.",
+    "does_not_support": [
+      "external-site validation",
+      "multicenter validation",
+      "patient-level independence",
+      "robustness to arbitrary or deployment-realistic distribution shifts"
+    ]
+  }
+}

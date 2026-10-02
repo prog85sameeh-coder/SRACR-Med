@@ -1,0 +1,13 @@
+﻿dataset,shift,monotonic_non_decreasing,protected_fraction_T0p10,protected_fraction_T0p95
+chest,clean,True,0.49755543025977167,1.0
+chest,downsample50_bilinear,True,0.49755543025977167,1.0
+chest,gaussian_blur_r1p5,True,0.49755543025977167,1.0
+chest,jpeg_q40,True,0.49755543025977167,1.0
+retinal,clean,True,0.5061160103233892,1.0
+retinal,downsample50_bilinear,True,0.506973801926153,1.0
+retinal,gaussian_blur_r1p5,True,0.5056871402892528,1.0
+retinal,jpeg_q40,True,0.5058708607496826,1.0
+split,clean,True,0.5002594965295645,1.0
+split,downsample50_bilinear,True,0.5020000028586784,1.0
+split,gaussian_blur_r1p5,True,0.5031075977953873,1.0
+split,jpeg_q40,True,0.5020000028586784,1.0

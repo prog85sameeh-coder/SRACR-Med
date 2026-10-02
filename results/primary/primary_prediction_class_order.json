@@ -1,0 +1,25 @@
+{
+  "chest": [
+    "Chest_Radiograh Screeing (X-Ray)",
+    "NORMAL_Images"
+  ],
+  "retinal": [
+    "AdvancedEnd-stage Glaucoma",
+    "Dry Age-Related Macular Degeneration",
+    "Mild Diabetic Retinopathy",
+    "Mild Glaucoma",
+    "Moderate Diabetic Retinopathy",
+    "Moderate Glaucoma",
+    "No Age-Related Macular Degeneration (Healthy regarding AMD)",
+    "Proliferative Diabetic Retinopathy (PDR)",
+    "Severe Diabetic Retinopathy",
+    "Severe Glaucoma",
+    "Wet Age-Related Macular Degeneration"
+  ],
+  "split": [
+    "cataract",
+    "diabetic_retinopathy",
+    "glaucoma",
+    "normal"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "seed": 42,
+  "device": "cpu",
+  "shifts": [
+    "clean",
+    "gaussian_blur_r1p5",
+    "jpeg_q40",
+    "downsample50_bilinear"
+  ],
+  "shift_definitions": {
+    "gaussian_blur_r1p5": "PIL GaussianBlur radius=1.5",
+    "jpeg_q40": "JPEG encode/decode quality=40, subsampling=2",
+    "downsample50_bilinear": "resize to 50% native width/height then restore with bilinear interpolation"
+  },
+  "note": "These controlled shifts are distinct from the four saliency-reliability perturbations used inside Q_S (noise, brightness, contrast, 2-pixel roll).",
+  "saliency": {
+    "target_layer": "ResNet18 layer4[-1].conv2",
+    "target_rule": "shifted-image argmax, fixed across the four reliability perturbations",
+    "reliability_perturbations": 4
+  },
+  "controller": {
+    "weights": [
+      0.3,
+      0.25,
+      0.3,
+      0.15
+    ],
+    "thresholds": [
+      0.3,
+      0.5,
+      0.7
+    ],
+    "hysteresis": 0.05,
+    "coverage": {
+      "1": 0.25,
+      "2": 0.5,
+      "3": 0.75,
+      "4": 1.0
+    },
+    "threats": [
+      0.1,
+      0.4,
+      0.7,
+      0.95
+    ],
+    "sequence_seeds": {
+      "0.1": [
+        1742,
+        2751,
+        3760,
+        4769,
+        5778
+      ],
+      "0.4": [
+        6842,
+        7851,
+        8860,
+        9869,
+        10878
+      ],
+      "0.7": [
+        11942,
+        12951,
+        13960,
+        14969,
+        15978
+      ],
+      "0.95": [
+        16192,
+        17201,
+        18210,
+        19219,
+        20228
+      ]
+    }
+  },
+  "primary_outcomes": [
+    "diagnostic accuracy/macro-F1",
+    "prediction agreement with clean",
+    "uncertainty",
+    "saliency reliability",
+    "tile-score Spearman correlation vs clean",
+    "top-50% tile Jaccard vs clean",
+    "controller-level agreement vs clean",
+    "protected-fraction response across T"
+  ],
+  "scope": "controlled distribution-shift stress test on internal held-out images; not an external-site or multicenter validation and not patient-level validation"
+}

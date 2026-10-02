@@ -1,0 +1,37 @@
+{
+  "purpose": "Same-condition head-to-head comparison of selective-protection spatial strategies.",
+  "datasets": [
+    "chest",
+    "retinal",
+    "fundus-4"
+  ],
+  "same_test_splits": true,
+  "tile_grid": "same 64x64 tiling and edge handling as SRACR-Med",
+  "budgets": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "budget_matching": "SRACR defines the actual per-image protected-pixel target after tile rounding; each alternative selects a prefix whose cumulative pixel area is closest to the same target.",
+  "policies": {
+    "sracr_saliency": "ResNet-18 Grad-CAM-derived spatial order (same within-image order as reliability-weighted saliency because Q_S is a positive image-level scalar).",
+    "content_variance": "local grayscale variance",
+    "center_roi": "fixed geometric center priority",
+    "random": "deterministic image/budget-seeded random tile order"
+  },
+  "same_attacker": "independent MobileNetV3-Small per dataset",
+  "same_visibility_proxy": "protected tiles replaced with RGB 127 for the residual-information attack endpoint",
+  "same_metrics": [
+    "accuracy",
+    "macro-F1",
+    "true-class probability",
+    "NLL"
+  ],
+  "same_inference_statistics": "2000 bootstrap resamples; 10000 paired sign-flip permutations; Holm correction",
+  "aes_execution_control": {
+    "implementation": "single shared AES-256-GCM tile-encryption routine; selector changes only tile IDs",
+    "note": "The residual-leakage attack uses neutral masking at the selected locations rather than rendering ciphertext as image pixels. AES-GCM round-trip correctness is evaluated separately; cipher choice is not varied among policies."
+  },
+  "why_no_separate_raw_gradcam_baseline": "Reliability Q_S is a positive scalar per image, so it does not change within-image tile ranking at a fixed budget; raw Grad-CAM and SRACR spatial order are therefore identical for this head-to-head test.",
+  "why_no_entropy_tile_baseline": "Predictive entropy/uncertainty is image-level and does not define a spatial tile ordering at a fixed within-image budget; it is evaluated in controller/risk ablation rather than as a spatial selector."
+}

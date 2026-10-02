@@ -1,0 +1,60 @@
+{
+  "artifact": "SRACR-Med Reviewer 1 Comment 9 selective-encryption threat model",
+  "security_goal": "Measure residual diagnostically recoverable information from unencrypted image regions under selective protection.",
+  "protected_asset": "Medical-image pixel content selected for AES-256-GCM protection.",
+  "adversary_goal": "Infer the diagnostic class from visible unprotected pixels.",
+  "adversary_knowledge": [
+    "SRACR-Med system design",
+    "image dimensions",
+    "tile grid",
+    "protection budget rho",
+    "protected tile positions",
+    "all unprotected pixels"
+  ],
+  "adversary_does_not_have": [
+    "AES-256-GCM secret key",
+    "decryption oracle",
+    "endpoint/KMS/HSM compromise",
+    "plaintext of protected tiles"
+  ],
+  "attack_model": {
+    "classifier": "Independent ImageNet-pretrained MobileNetV3-Small per dataset",
+    "training_view": "Original unmasked training/validation images",
+    "test_view": "Unprotected pixels visible; protected tiles replaced with neutral RGB 127",
+    "adaptivity": "Non-adaptive; attacker is not retrained on masked views"
+  },
+  "evaluated_budgets": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "sanity_floor": {
+    "budget": 1.0,
+    "condition": "full_mask",
+    "interpretation": "No visible image pixels; residual predictions reflect classifier/prior bias, not cryptographic proof."
+  },
+  "outcomes": [
+    "attacker accuracy",
+    "macro-F1",
+    "mean true-class probability",
+    "negative log-likelihood"
+  ],
+  "cross_dataset_macro_attacker_accuracy": {
+    "unprotected": 0.862533,
+    "sracr_25pct": 0.524951,
+    "sracr_50pct": 0.409181,
+    "sracr_75pct": 0.309473,
+    "full_mask": 0.249334
+  },
+  "scope_exclusions": [
+    "cryptanalysis of AES-GCM",
+    "key theft",
+    "chosen-ciphertext/decryption-oracle attacks",
+    "endpoint or memory compromise",
+    "traffic analysis",
+    "metadata-only inference",
+    "side channels",
+    "adaptive attacker retrained on masked views"
+  ],
+  "claim_boundary": "For rho<1, full-image confidentiality is not claimed. AES round-trip/prediction preservation are implementation-correctness checks only."
+}

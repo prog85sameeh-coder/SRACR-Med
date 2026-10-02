@@ -1,0 +1,99 @@
+{
+  "study": "SRACR-Med",
+  "artifact_version": "R1C11-1.0",
+  "primary_classifier": {
+    "architecture": "ResNet-18",
+    "image_size": 224,
+    "seed": 42
+  },
+  "gradcam": {
+    "target_layer": "model.layer4[-1].conv2",
+    "target_class_rule": "argmax predicted class on the unperturbed image, held fixed across perturbations"
+  },
+  "saliency_reliability": {
+    "number_of_perturbations": 4,
+    "perturbations": [
+      {
+        "type": "gaussian_noise",
+        "sigma": 0.02
+      },
+      {
+        "type": "brightness_add",
+        "delta": 0.05
+      },
+      {
+        "type": "contrast_about_channel_mean",
+        "relative_delta": 0.05
+      },
+      {
+        "type": "spatial_roll",
+        "vertical_pixels": 2,
+        "horizontal_pixels": -2
+      }
+    ],
+    "cosine_degenerate_rule": "if either map norm < 1e-10, similarity=0",
+    "raw_image_domain": "[0,1] before ImageNet normalization",
+    "rebuild_rng_seed_v7_3_2": 42
+  },
+  "resize": {
+    "classifier_input": [
+      224,
+      224
+    ],
+    "input_interpolation": "bilinear",
+    "gradcam_upsample": "bilinear align_corners=False",
+    "map_to_original_image": "PIL bilinear"
+  },
+  "tiling": {
+    "tile_size_pixels": 64,
+    "grid_rule": "ceil(H/64) x ceil(W/64)",
+    "edge_tiles": "partial edge tiles retained; no padding",
+    "selection_k": "max(1,min(N,ceil(rho*N)))",
+    "tie_rule": "stable descending sort; row-major tile generation means exact ties favor lower tile ID"
+  },
+  "clinical_criticality_file": "config/clinical_criticality_assignments.csv",
+  "global_risk": {
+    "weights": {
+      "saliency": 0.3,
+      "clinical": 0.25,
+      "threat": 0.3,
+      "uncertainty": 0.15
+    }
+  },
+  "controller": {
+    "thresholds": [
+      0.3,
+      0.5,
+      0.7
+    ],
+    "hysteresis": 0.05,
+    "coverage_by_level": {
+      "1": 0.25,
+      "2": 0.5,
+      "3": 0.75,
+      "4": 1.0
+    },
+    "critical_threat_force_level4": 0.9
+  },
+  "threat_values": [
+    0.1,
+    0.4,
+    0.7,
+    0.95
+  ],
+  "statistics": {
+    "main_ablation": "See code/main_pipeline/configs/config.yaml and exact result tables; paired tests are image-paired sign-flip tests with Holm correction.",
+    "independent_leakage": {
+      "bootstrap_resamples": 2000,
+      "signflip_permutations": 10000,
+      "holm_correction": true
+    }
+  },
+  "exact_stream_orders": "config/controller_stream_orders.csv",
+  "exact_split_indices": "data_index/exact_split_manifest.csv",
+  "exact_feature_caches": "archived_feature_cache/*.pkl.gz",
+  "exact_image_level_policy_metrics": [
+    "results/main_ablation/ALL_DATASETS_image_level_ablation.csv",
+    "results/independent_leakage/ALL_DATASETS_independent_leakage_image_level.csv"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "chest_xray_resnet18.pt": {
+    "sha256": "3c481f929d0456bd30c7932079fd93068e6bb946d5a8725712e8320ffc755a31",
+    "bytes": 44788966
+  },
+  "retinal_11class_resnet18.pt": {
+    "sha256": "11404a9232ebbd77b9fb61afeaf6ea0c12215ec25b9ae86b9dfabb59f847cc96",
+    "bytes": 44808476
+  },
+  "fundus_4class_resnet18.pt": {
+    "sha256": "add36cb106d38a2ff77fbfe275159946af6d5202b21f1664f715e1a18972f71a",
+    "bytes": 44793568
+  }
+}

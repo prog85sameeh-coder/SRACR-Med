@@ -1,0 +1,48 @@
+{
+  "artifact_version": "R1C11-1.0",
+  "total_images": 10216,
+  "datasets": [
+    {
+      "alias": "chest",
+      "local_source_key": "Detection of Pneumonia Disease using Chest Radiogr",
+      "title": "Detection of Pneumonia Disease using Chest Radiograph Image Dataset",
+      "provider": "Mendeley Data",
+      "version": "1",
+      "doi": "10.17632/kpg5yz77gj.1",
+      "images_used": 504,
+      "class_counts": {
+        "Chest_Radiograh Screeing (X-Ray)": 300,
+        "NORMAL_Images": 204
+      }
+    },
+    {
+      "alias": "retinal",
+      "local_source_key": "Retinal Dataset",
+      "title": "A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis",
+      "provider": "Mendeley Data",
+      "version": "1",
+      "doi": "10.17632/z227d626vm.1",
+      "images_used": 5500,
+      "note": "The study used the 5,500-image class-balanced generated/augmented directory (500 per class), not an additional union with the 1,222 originals."
+    },
+    {
+      "alias": "split",
+      "local_source_key": "split",
+      "title": "Cataract DR normal glaucoma fundus images dataset",
+      "provider": "Kaggle",
+      "version": "public 2022 snapshot; no scholarly version number exposed",
+      "dataset_slug": "drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset",
+      "images_used": 4212,
+      "class_counts": {
+        "cataract": 1038,
+        "diabetic_retinopathy": 1093,
+        "glaucoma": 1007,
+        "normal": 1074
+      },
+      "snapshot_identity": "Per-file SHA-256 values in exact_split_manifest.csv"
+    }
+  ],
+  "patient_level_partitioning": false,
+  "partition_unit": "verified exact/near-duplicate image group",
+  "limitation": "No consistent authoritative patient/study ID was available for every image across all three source artifacts."
+}

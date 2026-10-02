@@ -1,0 +1,52 @@
+﻿source_dataset_id,source_dataset_title,class_label,final_split,n_images
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,cataract,test,152
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,cataract,train,729
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,cataract,val,157
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,diabetic_retinopathy,test,164
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,diabetic_retinopathy,train,765
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,diabetic_retinopathy,val,164
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,glaucoma,test,155
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,glaucoma,train,704
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,glaucoma,val,148
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,normal,test,161
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,normal,train,752
+Kaggle:drskprabhakar/cataract-dr-normal-glaucoma-fundus-images-dataset,Cataract DR normal glaucoma fundus images dataset,normal,val,161
+Mendeley:kpg5yz77gj:v1,Detection of Pneumonia Disease using Chest Radiograph Image Dataset,Chest_Radiograh Screeing (X-Ray),test,45
+Mendeley:kpg5yz77gj:v1,Detection of Pneumonia Disease using Chest Radiograph Image Dataset,Chest_Radiograh Screeing (X-Ray),train,210
+Mendeley:kpg5yz77gj:v1,Detection of Pneumonia Disease using Chest Radiograph Image Dataset,Chest_Radiograh Screeing (X-Ray),val,45
+Mendeley:kpg5yz77gj:v1,Detection of Pneumonia Disease using Chest Radiograph Image Dataset,NORMAL_Images,test,32
+Mendeley:kpg5yz77gj:v1,Detection of Pneumonia Disease using Chest Radiograph Image Dataset,NORMAL_Images,train,141
+Mendeley:kpg5yz77gj:v1,Detection of Pneumonia Disease using Chest Radiograph Image Dataset,NORMAL_Images,val,31
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,AdvancedEnd-stage Glaucoma,test,75
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,AdvancedEnd-stage Glaucoma,train,350
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,AdvancedEnd-stage Glaucoma,val,75
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Dry Age-Related Macular Degeneration,test,75
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Dry Age-Related Macular Degeneration,train,349
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Dry Age-Related Macular Degeneration,val,76
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Mild Diabetic Retinopathy,test,75
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Mild Diabetic Retinopathy,train,351
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Mild Diabetic Retinopathy,val,74
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Mild Glaucoma,test,76
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Mild Glaucoma,train,347
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Mild Glaucoma,val,77
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Moderate Diabetic Retinopathy,test,74
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Moderate Diabetic Retinopathy,train,352
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Moderate Diabetic Retinopathy,val,74
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Moderate Glaucoma,test,75
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Moderate Glaucoma,train,350
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Moderate Glaucoma,val,75
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,No Age-Related Macular Degeneration (Healthy regarding AMD),test,74
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,No Age-Related Macular Degeneration (Healthy regarding AMD),train,347
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,No Age-Related Macular Degeneration (Healthy regarding AMD),val,79
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Proliferative Diabetic Retinopathy (PDR),test,70
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Proliferative Diabetic Retinopathy (PDR),train,358
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Proliferative Diabetic Retinopathy (PDR),val,72
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Severe Diabetic Retinopathy,test,76
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Severe Diabetic Retinopathy,train,347
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Severe Diabetic Retinopathy,val,77
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Severe Glaucoma,test,74
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Severe Glaucoma,train,348
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Severe Glaucoma,val,78
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Wet Age-Related Macular Degeneration,test,72
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Wet Age-Related Macular Degeneration,train,355
+Mendeley:z227d626vm:v1,A Multi-Class Retinal Fundus Image Dataset for Deep Learning-Based Ocular Disease Diagnosis,Wet Age-Related Macular Degeneration,val,73

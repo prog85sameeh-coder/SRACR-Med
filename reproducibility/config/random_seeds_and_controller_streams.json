@@ -1,0 +1,107 @@
+{
+  "base_seed": 42,
+  "training_seed": 42,
+  "saliency_cache_rebuild_seed_v7_3_2": 42,
+  "bootstrap_and_permutation_base_seed": 42,
+  "sequence_reps_per_threat": 5,
+  "threat_values": [
+    0.1,
+    0.4,
+    0.7,
+    0.95
+  ],
+  "sequence_seed_formula": "sequence_seed = base_seed + rep_index*1009 + round(threat*1000)*17, where rep_index=0..4",
+  "exact_sequence_seeds_by_dataset_and_threat": {
+    "chest": {
+      "0.10": [
+        1742,
+        2751,
+        3760,
+        4769,
+        5778
+      ],
+      "0.40": [
+        6842,
+        7851,
+        8860,
+        9869,
+        10878
+      ],
+      "0.70": [
+        11942,
+        12951,
+        13960,
+        14969,
+        15978
+      ],
+      "0.95": [
+        16192,
+        17201,
+        18210,
+        19219,
+        20228
+      ]
+    },
+    "retinal": {
+      "0.10": [
+        1742,
+        2751,
+        3760,
+        4769,
+        5778
+      ],
+      "0.40": [
+        6842,
+        7851,
+        8860,
+        9869,
+        10878
+      ],
+      "0.70": [
+        11942,
+        12951,
+        13960,
+        14969,
+        15978
+      ],
+      "0.95": [
+        16192,
+        17201,
+        18210,
+        19219,
+        20228
+      ]
+    },
+    "split": {
+      "0.10": [
+        1742,
+        2751,
+        3760,
+        4769,
+        5778
+      ],
+      "0.40": [
+        6842,
+        7851,
+        8860,
+        9869,
+        10878
+      ],
+      "0.70": [
+        11942,
+        12951,
+        13960,
+        14969,
+        15978
+      ],
+      "0.95": [
+        16192,
+        17201,
+        18210,
+        19219,
+        20228
+      ]
+    }
+  },
+  "note": "The exact stream order itself is stored in controller_stream_orders.csv; the same seed set is used for all three datasets."
+}

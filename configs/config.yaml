@@ -1,0 +1,74 @@
+paths:
+  output_dir: "outputs"
+  model_dir: "models"
+  training_dir: "outputs/training"
+  benchmark_dir: "outputs/benchmark"
+  sweep_dir: "outputs/threat_sweep"
+  validation_dir: "outputs/multi_dataset_validation"
+
+train:
+  seed: 42
+  epochs: 8
+  batch_size: 32
+  num_workers: 0
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  image_size: 224
+
+saliency:
+  perturbations: 4
+  noise_std: 0.02
+  brightness_delta: 0.05
+  contrast_delta: 0.05
+
+global_risk:
+  weights:
+    saliency: 0.30
+    clinical: 0.25
+    threat: 0.30
+    uncertainty: 0.15
+
+controller:
+  thresholds: [0.30, 0.50, 0.70]
+  hysteresis: 0.05
+  coverage_by_level:
+    1: 0.25
+    2: 0.50
+    3: 0.75
+    4: 1.00
+
+benchmark:
+  saliency_fixed_coverage: 0.50
+
+crypto:
+  algorithm: "AES-256-GCM"
+  tile_size: 64
+
+clinical_prior:
+  default: 0.65
+  classes:
+    "NORMAL_Images": 0.35
+    "Chest_Radiograh Screeing (X-Ray)": 0.75
+    "normal": 0.35
+    "cataract": 0.65
+    "glaucoma": 0.85
+    "diabetic_retinopathy": 0.85
+    "No Age-Related Macular Degeneration (Healthy regarding AMD)": 0.35
+    "Mild Glaucoma": 0.65
+    "Moderate Glaucoma": 0.80
+    "Severe Glaucoma": 0.95
+    "AdvancedEnd-stage Glaucoma": 1.00
+    "Mild Diabetic Retinopathy": 0.65
+    "Moderate Diabetic Retinopathy": 0.80
+    "Severe Diabetic Retinopathy": 0.95
+    "Proliferative Diabetic Retinopathy (PDR)": 1.00
+    "Dry Age-Related Macular Degeneration": 0.80
+    "Wet Age-Related Macular Degeneration": 0.95
+
+final_validation:
+  bootstrap_reps: 2000
+  permutation_reps: 5000
+  sequence_reps: 5
+  alpha: 0.05
+  nominal_threat: 0.40
+  note: "Replacement ablations preserve the original risk weights and scale. Paired tests use identical held-out images; significance uses paired sign-flip permutation tests with Holm correction."

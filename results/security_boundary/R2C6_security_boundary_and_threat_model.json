@@ -1,0 +1,121 @@
+{
+  "comment": "Reviewer 2 Comment 6",
+  "security_property_decomposition": {
+    "AES_256_GCM": {
+      "property": "Authenticated encryption for bytes actually encrypted, conditional on correct key/nonce management.",
+      "evaluated_here": "Round-trip correctness, exact reconstruction/prediction preservation, and descriptive CPU latency.",
+      "not_evaluated_here": [
+        "cryptanalysis",
+        "key compromise",
+        "nonce-misuse resistance beyond implementation checks",
+        "KMS/HSM compromise"
+      ]
+    },
+    "selective_policy_rho_lt_1": {
+      "property": "No full-image confidentiality; unselected image tiles remain plaintext in the prototype.",
+      "evaluated_here": "Residual diagnostic recoverability from visible plaintext regions using an independent non-adaptive MobileNetV3-Small attacker.",
+      "claim": "Leakage reduction under the defined attacker; not a cryptographic confidentiality guarantee."
+    },
+    "production_full_file_envelope": {
+      "status": "Recommended layered architecture; not implemented or evaluated in the reported prototype.",
+      "intended_boundary": "Always-on full-file AES-GCM confidentiality at rest/in transit.",
+      "possible_SRACR_role_inside_envelope": [
+        "additional regional key/access-control tier",
+        "re-key or key-rotation urgency",
+        "re-encryption priority",
+        "audit/escalation priority"
+      ],
+      "claim_boundary": "Conceptual deployment architecture only; no evaluated access-control or multi-key performance/security claim."
+    }
+  },
+  "attacker_model": {
+    "observes": [
+      "every unprotected pixel",
+      "protected-tile positions",
+      "image dimensions",
+      "tile grid",
+      "protection budget",
+      "algorithm/policy design"
+    ],
+    "attempts": [
+      "diagnostic class inference from residual visible pixels"
+    ],
+    "does_not_have": [
+      "AES-256-GCM secret key",
+      "decryption oracle",
+      "endpoint/KMS/HSM compromise",
+      "plaintext for protected tiles"
+    ],
+    "not_tested": [
+      "identity inference",
+      "metadata-only inference",
+      "traffic analysis",
+      "adaptive retraining on masked views",
+      "side-channel attacks",
+      "key theft"
+    ]
+  },
+  "cross_dataset_macro_residual_leakage": [
+    {
+      "protection_level": 0.0,
+      "condition": "unprotected",
+      "attacker_accuracy": 0.8625334963291033,
+      "ci95": [
+        0.8166765651408242,
+        0.903125500296014
+      ],
+      "macro_f1": 0.8602361795289006,
+      "true_class_probability": 0.8355120928980643,
+      "nll": 0.3165500274182473
+    },
+    {
+      "protection_level": 0.25,
+      "condition": "SRACR",
+      "attacker_accuracy": 0.52495087025988,
+      "ci95": [
+        0.4713686970760686,
+        0.5785330434436912
+      ],
+      "macro_f1": 0.4589963857559897,
+      "true_class_probability": 0.4968815936540999,
+      "nll": 2.4838918037853213
+    },
+    {
+      "protection_level": 0.5,
+      "condition": "SRACR",
+      "attacker_accuracy": 0.4091809623734419,
+      "ci95": [
+        0.3524952750567047,
+        0.4658666496901791
+      ],
+      "macro_f1": 0.3469852888791795,
+      "true_class_probability": 0.389255525595747,
+      "nll": 3.623453374788062
+    },
+    {
+      "protection_level": 0.75,
+      "condition": "SRACR",
+      "attacker_accuracy": 0.3094728397688188,
+      "ci95": [
+        0.2554759917008614,
+        0.3676797627374693
+      ],
+      "macro_f1": 0.2356665917602947,
+      "true_class_probability": 0.304521170232059,
+      "nll": 3.93313057978715
+    },
+    {
+      "protection_level": 1.0,
+      "condition": "full_mask_sanity_floor",
+      "attacker_accuracy": 0.2493341698014073,
+      "ci95": [
+        0.1922338076005239,
+        0.305392865335624
+      ],
+      "macro_f1": 0.1352737726402287,
+      "true_class_probability": 0.2740001907505714,
+      "nll": 2.1222363005998788,
+      "interpretation": "No visible image pixels; residual predictions reflect model/class-prior bias, not recoverable image content and not cryptographic proof."
+    }
+  ]
+}

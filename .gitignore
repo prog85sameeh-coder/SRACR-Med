@@ -1,0 +1,44 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# raw/local data
+data/
+datasets/
+images/
+*.dcm
+*.nii
+*.nii.gz
+*.rar
+
+# large binaries/caches
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pkl.gz
+*.onnx
+feature_cache/
+attacker_models/
+checkpoints/
+
+# generated
+outputs/
+outputs_*/
+runs/
+logs/
+
+# secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Office temporary files
+~$*.docx
+~$*.xlsx

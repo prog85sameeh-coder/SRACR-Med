@@ -1,0 +1,89 @@
+{
+  "implementation_source": "SRACR-Med v7.3.1 archived experiment code",
+  "classifier_backbone": "ResNet-18",
+  "network_input_size": [
+    224,
+    224
+  ],
+  "network_resize_interpolation": "torchvision.transforms.Resize on PIL input; bilinear default",
+  "imagenet_normalization": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "grad_cam": {
+    "target_layer": "model.layer4[-1].conv2 (second convolution of the final ResNet-18 BasicBlock)",
+    "target_class_rule": "argmax predicted class on the unperturbed normalized image; same class held fixed for every perturbation",
+    "activation_map_postprocess": "ReLU; bilinear upsample to 224x224 with align_corners=False; subtract minimum; divide by max clamped to >=1e-8"
+  },
+  "saliency_reliability": {
+    "n_perturbations": 4,
+    "perturbations_in_order": [
+      "Gaussian additive noise, sigma=0.02",
+      "additive brightness +0.05",
+      "contrast increase x1.05 about the per-channel spatial mean",
+      "circular spatial roll: +2 pixels vertically and -2 pixels horizontally"
+    ],
+    "perturbation_domain": "raw [0,1] tensor before ImageNet normalization; clamp to [0,1] after perturbation",
+    "similarity": "cosine similarity between flattened base and perturbed Grad-CAM maps",
+    "degenerate_rule": "if either map L2 norm <1e-10, similarity=0.0",
+    "aggregation": "arithmetic mean of four similarities, clipped to [0,1]",
+    "published_cache_rng_note": "v7.3.1 did not explicitly reseed PyTorch immediately before feature-cache generation; exact reported Q_S values are preserved in released feature caches",
+    "revision_code_rng": "v7.3.2 explicitly sets Python, NumPy, and PyTorch seed to 42 before recomputation"
+  },
+  "seeds": {
+    "base_seed": 42,
+    "training": "Python random, NumPy, torch.manual_seed; CUDA seed if available",
+    "feature_test_sampling": "np.random.default_rng(42); final paper used all held-out test images",
+    "controller_sequence_seed_formula": "42 + rep*1009 + round(T*1000)*17, rep=0..4",
+    "controller_sequence_seeds": {
+      "T=0.10": [
+        1742,
+        2751,
+        3760,
+        4769,
+        5778
+      ],
+      "T=0.40": [
+        6842,
+        7851,
+        8860,
+        9869,
+        10878
+      ],
+      "T=0.70": [
+        11942,
+        12951,
+        13960,
+        14969,
+        15978
+      ],
+      "T=0.95": [
+        16192,
+        17201,
+        18210,
+        19219,
+        20228
+      ]
+    }
+  },
+  "tile_selection": {
+    "native_tile_size_px": 64,
+    "grid_shape": "rows=ceil(original_height/64), cols=ceil(original_width/64); therefore image-dependent, not a fixed 8x8 grid",
+    "boundary_rule": "last row/column tiles are clipped with min(image_extent, start+64) and may be smaller than 64x64",
+    "priority_map_to_native_image": "clip to [0,1], quantize to uint8, resize from 224x224 to original W x H using PIL bilinear interpolation, divide by 255",
+    "tile_score": "mean resized reliability-weighted saliency over the native tile",
+    "budget_count": "k=max(1,min(N,ceil(rho*N))) tiles",
+    "ranking": "descending tile score",
+    "tie_rule": "Python stable sort preserves the original row-major tile order; exact ties therefore resolve by ascending tile ID",
+    "tile_id_order": "row-major, top-to-bottom then left-to-right",
+    "budget_boundary_note": "rho is implemented as a tile-count fraction; because boundary tiles can be smaller, exact protected pixel area may differ slightly from rho"
+  }
+}
