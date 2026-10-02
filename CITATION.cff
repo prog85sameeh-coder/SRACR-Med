@@ -1,23 +1,37 @@
 cff-version: 1.2.0
 message: "If you use this software or reproducibility artifact, please cite the associated paper and archived software release."
+
 title: "SRACR-Med"
 version: "1.0.0"
 type: software
+
 authors:
   - family-names: "Abdulmajeed"
     given-names: "Nuha Qais"
+    affiliation: "Department of Computer Sciences, College of Science, University of Al Maarif, Al Anbar, 31001, Iraq"
+
   - family-names: "Jassim"
     given-names: "Sameeh Abdulghafour"
+    affiliation: "Department of Vocational Education in Anbar, Ministry of Education, Anbar, 31001, Iraq"
+
 date-released: "2026-10-02"
+
 repository-code: "https://github.com/prog85sameeh-coder/SRACR-Med"
 url: "https://github.com/prog85sameeh-coder/SRACR-Med"
+doi: "10.5281/zenodo.23104411"
+
 # Add after Zenodo release:
-# doi: "10.5281/zenodo.XXXXXXXX"
+# doi: "10.5281/zenodo.23104411"
+
 preferred-citation:
   type: article
   title: "From Saliency to Cyber Risk: A Self-Governing Risk-Adaptive Encryption Framework for Secure Medical Imaging"
+
   authors:
     - family-names: "Abdulmajeed"
       given-names: "Nuha Qais"
-    - family-names: "Sameeh Abdulghafour"
-      given-names: "Jassim"
+      affiliation: "Department of Computer Sciences, College of Science, University of Al Maarif, Al Anbar, 31001, Iraq"
+
+    - family-names: "Jassim"
+      given-names: "Sameeh Abdulghafour"
+      affiliation: "Department of Vocational Education in Anbar, Ministry of Education, Anbar, 31001, Iraq"
