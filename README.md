@@ -2,16 +2,19 @@
 
 Reproducibility repository for:
 
-**From Saliency to Cyber Risk: A Proof-of-Concept Risk-Adaptive Encryption Orchestration Framework for Secure Medical Imaging**
+**From Saliency to Cyber Risk: A Self-Governing Risk-Adaptive Encryption Framework for Secure Medical Imaging**
 
 Repository: https://github.com/prog85sameeh-coder/SRACR-Med
 
 ## Scope
 
+**Terminology.** In this repository and manuscript, *self-governing* means automatic stateful execution of the protection policy after externally supplied threat state and pre-specified engineering priors are available. It does **not** mean autonomous threat detection, live-IDS inference, or clinically calibrated cyber-risk estimation.
+
 SRACR-Med combines ResNet-18 diagnostic classification, Grad-CAM spatial prioritization, perturbation-based saliency reliability, predictive uncertainty, engineering clinical-criticality priors, externally supplied synthetic threat states, a stateful hysteretic controller, and AES-256-GCM.
 
 Important claim boundaries:
 
+- The current evidence is **proof-of-concept validation** of controller response and selective-protection behavior.
 - The global score is an **engineering control index**, not a calibrated cyber-risk probability.
 - The threat variable is a **synthetic externally supplied input**, not a live IDS output.
 - PMC is an **internal policy-concentration metric**, not an independent security endpoint.
