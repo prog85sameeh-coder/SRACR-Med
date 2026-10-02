@@ -42,3 +42,4 @@ logs/
 # Office temporary files
 ~$*.docx
 ~$*.xlsx
+paper/*.docx
