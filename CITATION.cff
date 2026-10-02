@@ -4,6 +4,8 @@ title: "SRACR-Med"
 version: "1.0.0"
 type: software
 authors:
+  - family-names: "Abdulmajeed"
+    given-names: "Nuha Qais"
   - family-names: "Jassim"
     given-names: "Sameeh Abdulghafour"
 date-released: "2026-10-02"
@@ -15,5 +17,7 @@ preferred-citation:
   type: article
   title: "From Saliency to Cyber Risk: A Self-Governing Risk-Adaptive Encryption Framework for Secure Medical Imaging"
   authors:
+    - family-names: "Abdulmajeed"
+      given-names: "Nuha Qais"
     - family-names: "Sameeh Abdulghafour"
       given-names: "Jassim"
